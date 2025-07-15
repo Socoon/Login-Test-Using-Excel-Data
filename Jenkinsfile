@@ -6,14 +6,24 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/Dem0nFace/LoginCase.git'
-                bat "mvn -Dmaven.test.failure.ignore=true clean test"
             }
+        }
 
+        stage('Build') {
+            steps {
+                bat "mvn clean compile"
+            }
+        }
+
+        stage('Test') {
+            steps {
+                bat "mvn -Dmaven.test.failure.ignore=true test"
+            }
             post {
-                success {
+                always {
                     allure([
                         includeProperties: false,
                         jdk: '',
