@@ -76,17 +76,6 @@
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>3.3.0</version>
-          <configuration>
-            <includes>
-              <include>**/*Test.java</include>
-            </includes>
-            <properties>
-              <property>
-                <name>listener</name>
-                <value>io.qameta.allure.testng.AllureTestNg</value>
-              </property>
-            </properties>
-              </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
