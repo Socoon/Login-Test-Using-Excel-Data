@@ -10,7 +10,7 @@ pipeline {
         stage('Build') {
             steps {
                 
-                git 'https://github.com/Dem0nFace/LoginCase.git'
+                git branch: 'main', url: 'https://github.com/Dem0nFace/LoginCase.git'
 
                
                 bat "mvn -Dmaven.test.failure.ignore=true clean package"
