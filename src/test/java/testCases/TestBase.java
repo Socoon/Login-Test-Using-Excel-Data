@@ -5,7 +5,7 @@ import static com.codeborne.selenide.Selenide.*;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
-public class TestBase {
+public abstract class  TestBase {
 
     @BeforeSuite
     public void startBrowser() {
