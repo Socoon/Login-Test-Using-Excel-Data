@@ -20,7 +20,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                bat "mvn -Dmaven.test.failure.ignore=true test -DsuiteXmlFile=LoginSuite.xml"
+               bat "mvn -Dmaven.test.failure.ignore=true -Dsurefire.suiteXmlFiles=LoginSuite.xml test"
             }
             post {
                 always {
