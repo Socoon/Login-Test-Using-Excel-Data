@@ -2,28 +2,23 @@ pipeline {
     agent any
 
     tools {
-        
         maven "MAVEN_HOME"
     }
 
     stages {
         stage('Build') {
             steps {
-                
                 git branch: 'main', url: 'https://github.com/Dem0nFace/LoginCase.git'
-
-               
-                bat "mvn -Dmaven.test.failure.ignore=true clean package"
-
-                
-               
+                bat "mvn -Dmaven.test.failure.ignore=true clean test"
             }
 
             post {
-               
                 success {
-                    junit '**/target/surefire-reports/TEST-*.xml'
-                    archiveArtifacts 'target/*.jar'
+                    allure([
+                        includeProperties: false,
+                        jdk: '',
+                        results: [[path: 'allure-results']]
+                    ])
                 }
             }
         }
