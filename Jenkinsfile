@@ -14,13 +14,13 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat "mvn clean compile"
+                bat "mvn clean test"
             }
         }
 
         stage('Test') {
             steps {
-                bat "mvn -Dmaven.test.failure.ignore=true test"
+                bat "mvn -Dmaven.test.failure.ignore=true test -DsuiteXmlFile=LoginSuite.xml"
             }
             post {
                 always {
